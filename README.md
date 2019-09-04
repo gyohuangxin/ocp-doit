@@ -34,7 +34,7 @@ script will add an `/etc/hosts` entry for the floating IP of the service VM
 hosting the API load balancer.  This is required for the installer to be able
 to look up the API hostname and talk to the API.
 
-- `./expose_ocp_api.sh`
+- `./expose-ocp-api.sh`
 
 ### Customizing Deployment
 
@@ -53,6 +53,6 @@ Once you have a complete working environment, you do not need to re-run all
 sripts.  If you're making changes to the installer, your workflow would look
 like:
 
-- `ocp_cleanup.sh`
+- `ocp-cleanup.sh`
 - `build_ocp_installer.sh`
 - `06_run_ocp.sh`
