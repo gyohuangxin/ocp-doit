@@ -10,9 +10,6 @@ else
     CLUSTER_IMAGE_NAME=$2
 fi
 
-CLUSTER_IMAGE_REF="$(oc adm release info --image-for=$CLUSTER_IMAGE_NAME $RELEASE_IMAGE)"
-
 echo
-echo "Cluster image: $CLUSTER_IMAGE_REF"
 echo "$CLUSTER_IMAGE_NAME commit in $RELEASE_IMAGE:"
-echo $(oc image info --output json "$CLUSTER_IMAGE_REF" | jq --raw-output '.config.config.Labels["vcs-url"] + "/commits/" + .config.config.Labels["vcs-ref"]')
+oc adm release info "$RELEASE_IMAGE" --commits -o json | jq --raw-output ".references.spec.tags[] | select(.name == \"$CLUSTER_IMAGE_NAME\") | .annotations.\"io.openshift.build.source-location\" + \"/commits/\" + .annotations.\"io.openshift.build.commit.id\""
