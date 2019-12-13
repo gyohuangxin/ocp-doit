@@ -8,3 +8,22 @@ echo "Downloading RHCOS image from:"
 echo "$IMAGE_URL"
 
 curl --insecure --compressed -L -O "$IMAGE_URL"
+
+IMAGE_NAME=$(echo "${IMAGE_URL##*/}")
+
+gzip -l $IMAGE_NAME >/dev/null 2>&1
+
+if [[ $? -eq 0 ]]
+then
+   echo "$IMAGE_NAME is compressed. Expanding..."
+   gunzip -f $IMAGE_NAME
+   IMAGE_NAME="${IMAGE_NAME%.gz}"
+fi
+
+
+if [ "$#" -eq 1 ]
+then
+   mv $IMAGE_NAME ${1}
+   IMAGE_NAME=${1}
+fi
+echo File saved as $IMAGE_NAME

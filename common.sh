@@ -29,7 +29,7 @@ export OPENSHIFT_INSTALL_RELEASE_IMAGE_OVERRIDE="registry.svc.ci.openshift.org/o
 # We'll have to check once in a while for a new version though.
 # You can get the latest hash here:
 # https://trunk.rdoproject.org/centos7/current-tripleo/commit.yaml
-TRIPLEO_VERSION='25698ebfff692178450478b5207b09ca99d277b2_aba8ec54'
+TRIPLEO_VERSION='38c4e3104abdeb4699cfbe7a78fa2f37d7a863b4_93bde36c'
 
 # Use some color to highlight actionable output
 highlight() {
