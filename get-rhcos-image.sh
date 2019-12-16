@@ -13,6 +13,8 @@ IMAGE_NAME=$(echo "${IMAGE_URL##*/}")
 
 gzip -l $IMAGE_NAME >/dev/null 2>&1
 
+# Lets check to see if file is compressed with gzip
+# and uncompress it if so
 if [[ $? -eq 0 ]]
 then
    echo "$IMAGE_NAME is compressed. Expanding..."
@@ -20,7 +22,7 @@ then
    IMAGE_NAME="${IMAGE_NAME%.gz}"
 fi
 
-
+# Save image with user specified name.
 if [ "$#" -eq 1 ]
 then
    mv $IMAGE_NAME ${1}

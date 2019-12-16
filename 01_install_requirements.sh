@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -xe
+set -x
 
 source common.sh
 
@@ -11,9 +11,8 @@ sudo yum -y update
 
 sudo yum -y install epel-release
 sudo yum -y install curl vim-enhanced wget python-pip patch psmisc figlet golang
-set +e
 sudo yum -y install https://dprince.fedorapeople.org/tmate-2.2.1-1.el7.centos.x86_64.rpm
-set -e
+
 # for tripleo-repos install:
 sudo yum -y install python-setuptools python-requests
 
