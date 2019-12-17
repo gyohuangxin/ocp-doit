@@ -38,7 +38,7 @@ if ! openstack image show cirros; then
     openstack image create cirros --container-format bare --disk-format qcow2 --public --file "$CIRROS_IMAGE_FILENAME"
 fi
 
-./get-rhcos-image.sh
+./get-rhcos-image.sh $RHCOS_IMAGE_FILENAME
 RHOS_IMAGE_HASH=$(sha512sum $RHCOS_IMAGE_FILENAME | awk '{print $1}')
 if ! openstack image show rhcos; then
     openstack image create rhcos --container-format bare --disk-format qcow2 --public --file $RHCOS_IMAGE_FILENAME
